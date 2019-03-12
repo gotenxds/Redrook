@@ -1,0 +1,21 @@
+version: 2
+importPivots: 1
+tpsheetFileNames:
+- Assets/codeandweb.com/Example/SpriteSheet/sprites.tpsheet
+- Assets/sprites/Areas/misc/lightrays/lightRays.tpsheet
+- Assets/sprites/Areas/misc/waterfalls/waterfall.tpsheet
+- Assets/sprites/Areas/realmOfFate/rof01.tpsheet
+- Assets/sprites/Areas/realmOfFate/stars/stars.tpsheet
+textureFileNames:
+- Assets/codeandweb.com/Example/SpriteSheet/sprites.png
+- Assets/sprites/Areas/misc/lightrays/lightRays.png
+- Assets/sprites/Areas/misc/waterfalls/waterfall.png
+- Assets/sprites/Areas/realmOfFate/rof01.png
+- Assets/sprites/Areas/realmOfFate/stars/stars.png
+normalmapFileNames:
+- Assets/codeandweb.com/Example/SpriteSheet/sprites_n.png
+- 
+- 
+- Assets/sprites/Areas/realmOfFate/rof01_n.png
+- 
+enableDebugOutput: 0
