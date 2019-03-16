@@ -1,109 +1,126 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Experimental.Input;
 
 namespace player
 {
     public class MovementController : CharacterMovement
     {
+        [SerializeField] private Controls controls;
         [SerializeField] private float rollingSpeed;
         [SerializeField] private float rollCooldown;
         
         private Vector2 velocity;
         private Vector2 rollingVelocity;
         private int framesInIdle;
-        private int lastHorizontal;
+        private float lastHorizontal;
+        private float lastVertical;
+        private bool isIdle;
         private float nextRoll;
+        private bool isRolling;
+        private int framesInRoll;
+        
+        private void OnEnable()
+        {
+            controls.Player.Enable();
+        }
+
+        private void OnDisable()
+        {
+            controls.Player.Disable();
+        }
 
         protected override void Awake()
         {
             base.Awake();
-//            controls.Enable();
-//
-//            controls.Player.Move.performed += ctx =>
-//            {
-//                //Debug.Log(ctx.ReadValue<Vector2>());
-//            };
+
+            controls.Player.Move.performed += MoveEvent;
+            controls.Player.Move.cancelled += MoveEvent;
+            controls.Player.Roll.performed += TryRoll;
+            
             velocity = new Vector2(maxSpeed, maxSpeed);
             rollingVelocity = new Vector2(rollingSpeed, rollingSpeed);
         }
 
         protected override void FixedUpdate()
         {
-            var horizontal = Input.GetAxisRaw("Horizontal");
-            var vertical = Input.GetAxisRaw("Vertical");
-            FlipSpriteIfNeeded();
+            if (!isIdle)
+            {
+                spriteRenderer.flipX = lastHorizontal > 0;
+            }
+            
+            if (isRolling && !IsRollingAnimationRunning())
+            {
+                if (framesInRoll > 0)
+                {
+                    OnRollEnd();
+                }
 
-            TryIdle(horizontal, vertical);
-            TryRoll();
-        
-            SetAnimatorDirections(horizontal, vertical);
-        
+                framesInRoll++;
+            }
+        }
+
+        private void MoveEvent(InputAction.CallbackContext ctx)
+        {
+            if (isRolling) return;
+            
+            isIdle = ctx.cancelled;
+            Debug.Log("Move" + isIdle);
+            var axis = ctx.ReadValue<Vector2>();
+            lastHorizontal = (float) Math.Round(axis.x);
+            lastVertical = (float) Math.Round(axis.y);
+                
+            SetAnimatorDirections();
             Move();
         }
 
-        public void Move()
+        private void Move()
         {
-            if (IsRollingAnimationRunning())
-            {
-                base.Move(rollingVelocity, new Vector2(animator.GetFloat("lastHorizontal"), animator.GetFloat("lastVertical")));
-            }
-            else
-            {
-                base.Move(velocity, new Vector2(animator.GetFloat("horizontal"), animator.GetFloat("vertical")));
-            }
+            base.Move(isRolling ? rollingVelocity : velocity, new Vector2(lastHorizontal, lastVertical));
         }
 
-        private void TryIdle(float horizontal, float vertical)
+        private void SetAnimatorDirections()
         {
-            framesInIdle = !IsRollingAnimationRunning() && (int)horizontal == 0 && (int) vertical == 0 ? framesInIdle + 1 : 0;
-        }
+            animator.SetFloat("horizontal", IsIdle() ? 0 : lastHorizontal);
+            animator.SetFloat("vertical", IsIdle() ? 0 : lastVertical);
 
-        private void SetAnimatorDirections(float horizontal, float vertical)
-        {
-            animator.SetFloat("horizontal", horizontal);
-            animator.SetFloat("vertical", vertical);
-
-            if (IsIdle() || IsRollingAnimationRunning()) return;
+            if (IsIdle()) return;
         
-            animator.SetFloat("lastHorizontal", horizontal);
-            animator.SetFloat("lastVertical", vertical);
+            animator.SetFloat("lastHorizontal", lastHorizontal);
+            animator.SetFloat("lastVertical", lastVertical);
         }
 
-        private void TryRoll()
+        private void TryRoll(InputAction.CallbackContext ctx)
         {
-            var pressedRoll = Input.GetAxisRaw("Roll") > 0;
             var rollCooldownOver = Time.time > nextRoll;
-        
-            if (pressedRoll && rollCooldownOver && !IsIdle() && !IsRollingAnimationRunning())
-            {
-                animator.SetTrigger("roll");
-                nextRoll = Time.time + rollCooldown;
-            }
+
+            if(isRolling || isIdle || !rollCooldownOver) return;
+            
+            controls.Player.Move.Disable();
+            isRolling = true;
+            framesInRoll = 0;
+            nextRoll = Time.time + rollCooldown;
+            animator.SetTrigger("roll");
+            Move();
+            
         }
 
         private bool IsIdle()
         {
-            return framesInIdle > 0;
-        }
-
-        public override void FlipSpriteIfNeeded()
-        {
-            float horizontal;
-
-            if (IsIdle() || IsRollingAnimationRunning())
-            {
-                horizontal = animator.GetFloat("lastHorizontal");
-            }
-            else
-            {
-                horizontal = animator.GetFloat("horizontal");
-            }
-        
-            spriteRenderer.flipX = horizontal > 0;
+            return isIdle && !isRolling;
         }
 
         private bool IsRollingAnimationRunning()
         {
             return animator.GetCurrentAnimatorStateInfo(0).IsTag("roll");
+        }
+        
+        private void OnRollEnd()
+        {
+            controls.Player.Move.Enable();
+            isRolling = false;
+            Move(Vector2.zero);
+            Debug.Log("EndRoll");
         }
     }
 }

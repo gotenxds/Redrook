@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: b17b44a5681ef4cb5bc4b12f0ff97102
+ScriptedImporter:
+  fileIDToRecycleName:
+    11400000: <root>
+    11400002: Player/Move
+    11400004: Player/Roll
+    11400006: Player/first
+    11400008: Player/second
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: e2fdc6edf8744b38b702a2a5ee3541b2, type: 3}
+  generateWrapperCode: 1
+  wrapperCodePath: 
+  wrapperClassName: 
+  wrapperCodeNamespace: 
+  generateActionEvents: 0
+  generateInterfaces: 0
+  actionGuids: []
+  actionMapGuids: []
