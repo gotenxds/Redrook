@@ -5,7 +5,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace DefaultNamespace
+namespace DefaultNameNspace
 {
     [ExecuteInEditMode]
     public class SceneLoader : MonoBehaviour

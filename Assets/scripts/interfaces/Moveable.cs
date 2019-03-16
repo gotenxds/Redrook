@@ -9,12 +9,12 @@ public abstract class Moveable : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    public virtual void Move(Vector2 velocity, Vector2 linearSteering)
+    protected void Move(Vector2 velocity, Vector2 linearSteering)
     {
         rigidBody.velocity = velocity * (Time.deltaTime + .5f) * linearSteering * Time.deltaTime;
     }
-    
-    public virtual void Move(Vector2 velocity)
+
+    protected void Move(Vector2 velocity)
     {
         rigidBody.velocity = velocity;
     }
