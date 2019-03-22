@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 5560504643422635900}
   - component: {fileID: 5560504643422635875}
   - component: {fileID: 5560504643422635874}
+  - component: {fileID: 708384121353419811}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -161,6 +162,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &708384121353419811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5560504643422635902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f591f602ec2a4494ba0b8f19c597ce2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8830648371898823525
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,12 +305,12 @@ PrefabInstance:
     - target: {fileID: 4067685411790230126, guid: 0730e95c7429fb341a1ca81ac2b12335,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.8934276
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4067685411790230126, guid: 0730e95c7429fb341a1ca81ac2b12335,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.098547
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4067685411790230126, guid: 0730e95c7429fb341a1ca81ac2b12335,
         type: 3}
@@ -347,12 +360,12 @@ PrefabInstance:
     - target: {fileID: 4067685412589832539, guid: 0730e95c7429fb341a1ca81ac2b12335,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.8934276
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4067685412589832539, guid: 0730e95c7429fb341a1ca81ac2b12335,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.098547
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4067685412589832538, guid: 0730e95c7429fb341a1ca81ac2b12335,
         type: 3}
