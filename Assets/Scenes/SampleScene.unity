@@ -356,6 +356,11 @@ PrefabInstance:
       propertyPath: rollCooldown
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5560504643422635875, guid: 5f1b6d6d1ebddec48ab86cd0ce4fe53d,
+        type: 3}
+      propertyPath: rollingSpeed
+      value: 1200
+      objectReference: {fileID: 0}
     - target: {fileID: 6580738696520426014, guid: 5f1b6d6d1ebddec48ab86cd0ce4fe53d,
         type: 3}
       propertyPath: m_LocalPosition.x
