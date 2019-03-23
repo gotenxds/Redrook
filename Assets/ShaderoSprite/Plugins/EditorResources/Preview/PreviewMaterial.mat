@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PreviewMaterial
-  m_Shader: {fileID: 4800000, guid: 5e85c204f931cd544a05b0a43ad97833, type: 3}
+  m_Shader: {fileID: 4800000, guid: dda424a1de5da2549ba1dcafb5d7e34a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -280,7 +280,7 @@ Material:
     - _Cutoff: 0.5
     - _Darkness_Fade_1: 0.3
     - _Destroyer_Speed_1: 0.5
-    - _Destroyer_Value_1: 0
+    - _Destroyer_Value_1: 0.5
     - _DetailNormalMapScale: 1
     - _DisplacementPack_Size_1: 1.221
     - _DisplacementPack_ValueX_1: 0.036
@@ -324,7 +324,7 @@ Material:
     - _Generate_Donut_PosX_3: 0.5
     - _Generate_Donut_PosX_4: 0.5
     - _Generate_Donut_PosX_5: 0.5
-    - _Generate_Donut_PosY_1: 0.5
+    - _Generate_Donut_PosY_1: 0.725
     - _Generate_Donut_PosY_2: 0.5
     - _Generate_Donut_PosY_3: 0.5
     - _Generate_Donut_PosY_4: 0.5
@@ -334,12 +334,12 @@ Material:
     - _Generate_Donut_SizeDonut_3: 0
     - _Generate_Donut_SizeDonut_4: 0
     - _Generate_Donut_SizeDonut_5: 0
-    - _Generate_Donut_SizeSmooth_1: 0.2
+    - _Generate_Donut_SizeSmooth_1: 0.525
     - _Generate_Donut_SizeSmooth_2: 0.2
     - _Generate_Donut_SizeSmooth_3: 0
     - _Generate_Donut_SizeSmooth_4: 0
     - _Generate_Donut_SizeSmooth_5: 0
-    - _Generate_Donut_Size_1: 0.1
+    - _Generate_Donut_Size_1: -0.35
     - _Generate_Donut_Size_2: 0.1
     - _Generate_Donut_Size_3: 0
     - _Generate_Donut_Size_4: 0
@@ -893,7 +893,7 @@ Material:
     - _HumanBreatEx_Intensity_1: 2
     - _HumanBreatEx_Side_Intensity_1: 0.476
     - _HumanBreatEx_Speed_1: 1.037
-    - _InnerGlowHQ_Intensity_1: 2
+    - _InnerGlowHQ_Intensity_1: 14.314
     - _InnerGlowHQ_Size_1: 3
     - _LerpUV_Fade_1: 1
     - _Lerp_Fade_1: 1
@@ -1000,10 +1000,10 @@ Material:
     - __CompressionFX_Value_1: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorGradients_Color1_1: {r: 1, g: 0, b: 0, a: 1}
+    - _ColorGradients_Color1_1: {r: 0, g: 0.59636354, b: 1, a: 1}
     - _ColorGradients_Color2_1: {r: 0, g: 0, b: 1, a: 1}
     - _ColorGradients_Color3_1: {r: 0, g: 1, b: 0, a: 1}
-    - _ColorGradients_Color4_1: {r: 1, g: 1, b: 0, a: 1}
+    - _ColorGradients_Color4_1: {r: 0.92156863, g: 0.92156863, b: 0.92156863, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FillColor_Color_1: {r: 1, g: 0.7832226, b: 0.043137252, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
@@ -1025,4 +1025,4 @@ Material:
     - _Outline_Color_1: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowLight_Color_1: {r: 0, g: 0.7, b: 1, a: 1}
-    - _TintRGBA_Color_1: {r: 1, g: 0, b: 0, a: 0.528}
+    - _TintRGBA_Color_1: {r: 0.9197265, g: 1, b: 0.8349056, a: 1}
