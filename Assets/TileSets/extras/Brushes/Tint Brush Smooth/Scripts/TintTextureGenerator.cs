@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Utils;
@@ -29,6 +30,8 @@ public class TintTextureGenerator : MonoBehaviour
 					filterMode = FilterMode.Bilinear
 				};		
 
+				m_TintTexture.SetPixels(Enumerable.Repeat(Color.white, k_TintMapSize * k_TintMapSize).ToArray());
+				
 				RefreshGlobalShaderValues();
 			}
 			
@@ -61,7 +64,7 @@ public class TintTextureGenerator : MonoBehaviour
 		var scenePosition = SceneUtils.GetScenePosition(gameObject.scene);
 		
 		RefreshGlobalShaderValues();
-		Vector3Int texPosition = WorldToTexture(position);// + scenePosition;
+		Vector3Int texPosition = WorldToTexture(position);
 		tintTexture.SetPixel(texPosition.x, texPosition.y, GetGridInformation(grid).GetPositionProperty(position, "Tint", Color.white));
 		tintTexture.Apply();
 	}
@@ -82,11 +85,9 @@ public class TintTextureGenerator : MonoBehaviour
 		GetGridInformation(grid).SetPositionProperty(position, "Tint", color);
 		Refresh(grid, position);
 	}
-	
-	Vector3Int WorldToTexture(Vector3Int world)
+
+	private Vector3Int WorldToTexture(Vector3Int world)
 	{
-		Debug.Log(world);
-		var scenePosition = SceneUtils.GetScenePosition(gameObject.scene.name);
 		return new Vector3Int(world.x + tintTexture.width / 2, world.y + tintTexture.height / 2, 0);
 	}
 
@@ -110,5 +111,20 @@ public class TintTextureGenerator : MonoBehaviour
 		Shader.SetGlobalTexture("_TintMap", m_TintTexture);
 		Shader.SetGlobalFloat("_TintMapSize", k_TintMapSize);
 		Shader.SetGlobalVector("scenePos", SceneUtils.GetScenePosition(gameObject.scene) * toRedrookSpace);
+	}
+
+	public bool IsValidPosition(Vector3 position)
+	{
+		var halfSize = k_TintMapSize / 2;
+		var min = halfSize - k_TintMapSize;
+		var max = halfSize - 1;
+
+		return IsInRange(position.x, min, max) &&
+		       IsInRange(position.y, min, max);
+	}
+
+	private bool IsInRange(float num, float min, float max)
+	{
+		return num >= min && num <= max;
 	}
 }

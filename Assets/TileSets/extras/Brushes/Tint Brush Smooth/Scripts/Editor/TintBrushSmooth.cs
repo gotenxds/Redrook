@@ -1,4 +1,5 @@
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -7,33 +8,30 @@ namespace UnityEditor
 	[CustomGridBrush(false, false, false, "Tint Brush (Smooth)")]
 	public class TintBrushSmooth : GridBrushBase
 	{
-		private TintTextureGenerator generator
-		{
-			get
-			{
-				TintTextureGenerator generator = FindObjectOfType<TintTextureGenerator>();
-				if (generator == null)
-				{
-					// Note: Code assumes only one grid in scene
-					Grid grid = FindObjectOfType<Grid>();
-					if (grid != null)
-					{
-						generator = grid.gameObject.AddComponent<TintTextureGenerator>();
-					}
-				}
-				return generator;
-			}
-		}
-
 		public float m_Blend = 1f;
 		public Color m_Color = Color.white;
 
+		private bool IsInBounds(GridLayout grid, Vector3 position)
+		{
+			if (GetGenerator(grid).IsValidPosition(position))
+			{
+				return true;
+			}
+
+			EditorUtility.DisplayDialog("Ooops, anna fucked up", "You are trying to draw out of bounds, wrong tilemap selected?", "Sorry...");
+			return false;
+		}
+		
 		public override void Paint(GridLayout grid, GameObject brushTarget, Vector3Int position)
 		{
 			// Do not allow editing palettes
 			if (brushTarget.layer == 31)
 				return;
 
+			if (!IsInBounds(grid, position))
+			{
+				return;
+			}
 			TintTextureGenerator generator = GetGenerator(grid);
 			if (generator != null)
 			{
@@ -45,11 +43,19 @@ namespace UnityEditor
 
 		public override void Erase(GridLayout grid, GameObject brushTarget, Vector3Int position)
 		{
+			Debug.Log(position);
 			// Do not allow editing palettes
 			if (brushTarget.layer == 31)
+			{
 				return;
+			}
 
-			TintTextureGenerator generator = GetGenerator(grid);
+			if (!IsInBounds(grid, position))
+			{
+				return;
+			}
+
+			var generator = GetGenerator(grid);
 			if (generator != null)
 			{
 				generator.SetColor(grid as Grid, position, Color.white);
@@ -62,6 +68,11 @@ namespace UnityEditor
 			if (brushTarget.layer == 31)
 				return;
 
+			if (!IsInBounds(grid, position.center))
+			{
+				return;
+			}
+			
 			TintTextureGenerator generator = GetGenerator(grid);
 			if (generator != null)
 			{
@@ -69,7 +80,7 @@ namespace UnityEditor
 			}
 		}
 
-		private TintTextureGenerator GetGenerator(GridLayout grid)
+		private static TintTextureGenerator GetGenerator(GridLayout grid)
 		{
 			TintTextureGenerator generator = FindObjectOfType<TintTextureGenerator>();
 			if (generator == null)
@@ -92,7 +103,7 @@ namespace UnityEditor
 		{
 			get
 			{
-				return GameObject.FindObjectsOfType<Tilemap>().Select(x => x.gameObject).ToArray();
+				return FindObjectsOfType<Tilemap>().Select(x => x.gameObject).ToArray();
 			}
 		}
 
