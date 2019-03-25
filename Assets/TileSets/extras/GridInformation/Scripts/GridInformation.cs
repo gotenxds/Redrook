@@ -30,14 +30,11 @@ namespace UnityEngine.Tilemaps
         internal struct GridInformationKey
         {
             public Vector3Int position;
-            public String name;
+            public string name;
         }
 
         private Dictionary<GridInformationKey, GridInformationValue> m_PositionProperties = new Dictionary<GridInformationKey, GridInformationValue>();
-        internal Dictionary<GridInformationKey, GridInformationValue> PositionProperties
-        {
-            get { return m_PositionProperties; }
-        }
+        internal Dictionary<GridInformationKey, GridInformationValue> PositionProperties => m_PositionProperties;
 
         [SerializeField]
         [HideInInspector]
@@ -53,7 +50,7 @@ namespace UnityEngine.Tilemaps
 
         [SerializeField]
         [HideInInspector]
-        private List<String> m_PositionStringValues = new List<String>();
+        private List<String> m_PositionStringValues = new List<string>();
 
         [SerializeField]
         [HideInInspector]
@@ -69,7 +66,7 @@ namespace UnityEngine.Tilemaps
 
         [SerializeField]
         [HideInInspector]
-        private List<Double> m_PositionDoubleValues = new List<Double>();
+        private List<double> m_PositionDoubleValues = new List<double>();
 
         [SerializeField]
         [HideInInspector]
@@ -190,32 +187,32 @@ namespace UnityEngine.Tilemaps
             throw new NotImplementedException("Storing this type is not accepted in GridInformation");
         }
 
-        public bool SetPositionProperty(Vector3Int position, String name, int positionProperty)
+        public bool SetPositionProperty(Vector3Int position, string name, int positionProperty)
         {
             return SetPositionProperty(position, name, GridInformationType.Integer, positionProperty);
         }
 
-        public bool SetPositionProperty(Vector3Int position, String name, string positionProperty)
+        public bool SetPositionProperty(Vector3Int position, string name, string positionProperty)
         {
             return SetPositionProperty(position, name, GridInformationType.String, positionProperty);
         }
 
-        public bool SetPositionProperty(Vector3Int position, String name, float positionProperty)
+        public bool SetPositionProperty(Vector3Int position, string name, float positionProperty)
         {
             return SetPositionProperty(position, name, GridInformationType.Float, positionProperty);
         }
 
-        public bool SetPositionProperty(Vector3Int position, String name, double positionProperty)
+        public bool SetPositionProperty(Vector3Int position, string name, double positionProperty)
         {
             return SetPositionProperty(position, name, GridInformationType.Double, positionProperty);
         }
 
-        public bool SetPositionProperty(Vector3Int position, String name, UnityEngine.Object positionProperty)
+        public bool SetPositionProperty(Vector3Int position, string name, Object positionProperty)
         {
             return SetPositionProperty(position, name, GridInformationType.UnityObject, positionProperty);
         }
 
-        public bool SetPositionProperty(Vector3Int position, String name, Color positionProperty)
+        public bool SetPositionProperty(Vector3Int position, string name, Color positionProperty)
         {
             return SetPositionProperty(position, name, GridInformationType.Color, positionProperty);
         }
@@ -239,20 +236,12 @@ namespace UnityEngine.Tilemaps
             return false;
         }
 
-        public T GetPositionProperty<T>(Vector3Int position, String name, T defaultValue) where T : UnityEngine.Object
+        public List<(Vector3Int position, Color)> GetPositionProperties(string propertyName)
         {
-            GridInformationKey positionKey;
-            positionKey.position = position;
-            positionKey.name = name;
-
-            GridInformationValue positionValue;
-            if (m_PositionProperties.TryGetValue(positionKey, out positionValue))
-            {
-                if (positionValue.type != GridInformationType.UnityObject)
-                    throw new InvalidCastException("Value stored in GridInformation is not of the right type");
-                return positionValue.data as T;
-            }
-            return defaultValue;
+            return PositionProperties
+                .Where(properties => properties.Key.name == propertyName)
+                .Select(position => (position.Key.position, (Color) position.Value.data))
+                .ToList();
         }
 
         public int GetPositionProperty(Vector3Int position, String name, int defaultValue)
@@ -270,55 +259,7 @@ namespace UnityEngine.Tilemaps
             }
             return defaultValue;
         }
-
-        public string GetPositionProperty(Vector3Int position, String name, string defaultValue)
-        {
-            GridInformationKey positionKey;
-            positionKey.position = position;
-            positionKey.name = name;
-
-            GridInformationValue positionValue;
-            if (m_PositionProperties.TryGetValue(positionKey, out positionValue))
-            {
-                if (positionValue.type != GridInformationType.String)
-                    throw new InvalidCastException("Value stored in GridInformation is not of the right type");
-                return (string)positionValue.data;
-            }
-            return defaultValue;
-        }
-
-        public float GetPositionProperty(Vector3Int position, String name, float defaultValue)
-        {
-            GridInformationKey positionKey;
-            positionKey.position = position;
-            positionKey.name = name;
-
-            GridInformationValue positionValue;
-            if (m_PositionProperties.TryGetValue(positionKey, out positionValue))
-            {
-                if (positionValue.type != GridInformationType.Float)
-                    throw new InvalidCastException("Value stored in GridInformation is not of the right type");
-                return (float)positionValue.data;
-            }
-            return defaultValue;
-        }
-
-        public double GetPositionProperty(Vector3Int position, String name, double defaultValue)
-        {
-            GridInformationKey positionKey;
-            positionKey.position = position;
-            positionKey.name = name;
-
-            GridInformationValue positionValue;
-            if (m_PositionProperties.TryGetValue(positionKey, out positionValue))
-            {
-                if (positionValue.type != GridInformationType.Double)
-                    throw new InvalidCastException("Value stored in GridInformation is not of the right type");
-                return (double)positionValue.data;
-            }
-            return defaultValue;
-        }
-
+        
         public Color GetPositionProperty(Vector3Int position, String name, Color defaultValue)
         {
             GridInformationKey positionKey;
@@ -348,9 +289,9 @@ namespace UnityEngine.Tilemaps
             m_PositionProperties.Clear();
         }
 
-        public Vector3Int[] GetAllPositions(string propertyName)
+        public IEnumerable<Vector3Int> GetAllPositions(string propertyName)
         {
-            return m_PositionProperties.Keys.ToList().FindAll(x => x.name == propertyName).Select(x => x.position).ToArray();
+            return m_PositionProperties.Keys.ToList().FindAll(x => x.name == propertyName).Select(x => x.position);
         }
     }
 }

@@ -6,7 +6,8 @@ using Utils;
 [ExecuteInEditMode]
 public class TintTextureGenerator : MonoBehaviour
 {
-	public int k_TintMapSize = 256;
+	public int k_TintMapSize = 100;
+	private const float toRedrookSpace = -1f;
 
 	public void Start()
 	{
@@ -20,12 +21,17 @@ public class TintTextureGenerator : MonoBehaviour
 		{
 			if (m_TintTexture == null)
 			{
-				m_TintTexture = new Texture2D(k_TintMapSize, k_TintMapSize, TextureFormat.ARGB32, false);
-				m_TintTexture.hideFlags = HideFlags.HideAndDontSave;
-				m_TintTexture.wrapMode = TextureWrapMode.Clamp;
-				m_TintTexture.filterMode = FilterMode.Point;
+
+				m_TintTexture = new Texture2D(k_TintMapSize, k_TintMapSize, TextureFormat.ARGB32, false)
+				{
+					hideFlags = HideFlags.HideAndDontSave,
+					wrapMode = TextureWrapMode.Clamp,
+					filterMode = FilterMode.Bilinear
+				};		
+
 				RefreshGlobalShaderValues();
 			}
+			
 			return m_TintTexture;
 		}
 	}
@@ -35,17 +41,15 @@ public class TintTextureGenerator : MonoBehaviour
 		if (grid == null)
 			return;
 
-		var scenePosition = SceneUtils.GetScenePosition(gameObject.scene.name);
-		int w = tintTexture.width;
-		int h = tintTexture.height;
-		for (int y = 0; y < h; y++)
+		var gridPositionsProperties = GetGridInformation(grid).GetPositionProperties("Tint");
+		
+		for (var i = gridPositionsProperties.Count - 1; i >= 0; i--)
 		{
-			for (int x = 0; x < w; x++)
-			{
-				Vector3Int world = TextureToWorld(new Vector3Int(x, y, 0));
-				tintTexture.SetPixel(x, y, GetGridInformation(grid).GetPositionProperty(world, "Tint", Color.white));
-			}
+			var positionsProperty = gridPositionsProperties[i];
+			var texPos = WorldToTexture(positionsProperty.position);
+			tintTexture.SetPixel(texPos.x, texPos.y, positionsProperty.Item2);
 		}
+			
 		tintTexture.Apply();
 	}
 
@@ -54,8 +58,10 @@ public class TintTextureGenerator : MonoBehaviour
 		if (grid == null)
 			return;
 
+		var scenePosition = SceneUtils.GetScenePosition(gameObject.scene);
+		
 		RefreshGlobalShaderValues();
-		Vector3Int texPosition = WorldToTexture(position);
+		Vector3Int texPosition = WorldToTexture(position);// + scenePosition;
 		tintTexture.SetPixel(texPosition.x, texPosition.y, GetGridInformation(grid).GetPositionProperty(position, "Tint", Color.white));
 		tintTexture.Apply();
 	}
@@ -79,6 +85,8 @@ public class TintTextureGenerator : MonoBehaviour
 	
 	Vector3Int WorldToTexture(Vector3Int world)
 	{
+		Debug.Log(world);
+		var scenePosition = SceneUtils.GetScenePosition(gameObject.scene.name);
 		return new Vector3Int(world.x + tintTexture.width / 2, world.y + tintTexture.height / 2, 0);
 	}
 
@@ -101,5 +109,6 @@ public class TintTextureGenerator : MonoBehaviour
 	{
 		Shader.SetGlobalTexture("_TintMap", m_TintTexture);
 		Shader.SetGlobalFloat("_TintMapSize", k_TintMapSize);
+		Shader.SetGlobalVector("scenePos", SceneUtils.GetScenePosition(gameObject.scene) * toRedrookSpace);
 	}
 }

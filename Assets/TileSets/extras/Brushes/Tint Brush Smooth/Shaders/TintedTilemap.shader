@@ -31,6 +31,7 @@
 				sampler2D _MainTex;
 				sampler2D _TintMap;
 				float _TintMapSize;
+				float3 scenePos;
 
 				struct v2f {
 					float4 vertex : SV_POSITION;
@@ -41,7 +42,7 @@
 				v2f vert(appdata v) {
 					v2f o;
   
-					o.worldPos = mul (unity_ObjectToWorld, v.vertex);
+					o.worldPos = mul (unity_ObjectToWorld, v.vertex) + scenePos;
 					o.vertex = UnityObjectToClipPos(v.vertex);
 					o.uv = float4(v.texcoord.xy, 0, 0);
   
