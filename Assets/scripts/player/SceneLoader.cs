@@ -8,7 +8,9 @@ namespace player
     public class SceneLoader : MonoBehaviour
     {
         private Rigidbody2D body;
+        // ReSharper disable once PossibleLossOfFraction
         private readonly float loadRadius = Configs.CellSize / 3; 
+        // ReSharper disable once PossibleLossOfFraction
         private readonly float forgetRadius = Configs.CellSize / 2; 
         
 

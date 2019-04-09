@@ -1,24 +1,36 @@
 using System.Linq;
-using JetBrains.Annotations;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace UnityEditor
+namespace TileSets.Brushes.Tint_Brush_Smooth.Scripts.Editor
 {
 	[CustomGridBrush(false, false, false, "Tint Brush (Smooth)")]
 	public class TintBrushSmooth : GridBrushBase
 	{
-		public float m_Blend = 1f;
-		public Color m_Color = Color.white;
+		[SerializeField] private float mBlend = 1f;
+		[SerializeField] private Color mColor = Color.white;
 
-		private bool IsInBounds(GridLayout grid, Vector3 position)
+		public float blend
+		{
+			get { return mBlend; }
+			set { mBlend = value; }
+		}
+
+		public Color color
+		{
+			get { return mColor; }
+			set { mColor = value; }
+		}
+
+		private static bool IsInBounds(GridLayout grid, Vector3 position)
 		{
 			if (GetGenerator(grid).IsValidPosition(position))
 			{
 				return true;
 			}
 
-			EditorUtility.DisplayDialog("Ooops, anna fucked up", "You are trying to draw out of bounds, wrong tilemap selected?", "Sorry...");
+			EditorUtility.DisplayDialog("Ooops, Anna fucked up", "You are trying to draw out of bounds, wrong tilemap selected?", "Sorry...");
 			return false;
 		}
 		
@@ -32,13 +44,17 @@ namespace UnityEditor
 			{
 				return;
 			}
-			TintTextureGenerator generator = GetGenerator(grid);
-			if (generator != null)
+			
+			var generator = GetGenerator(grid);
+
+			if (generator == null)
 			{
-				var oldColor = generator.GetColor(grid as Grid, position);
-				var blendColor = oldColor * (1 - m_Blend) + m_Color * m_Blend;
-				generator.SetColor(grid as Grid, position, blendColor);
+				return;
 			}
+
+			var oldColor = generator.GetColor(grid as Grid, position);
+			var blendColor = oldColor * (1 - mBlend) + mColor * mBlend;
+			generator.SetColor(grid as Grid, position, blendColor);
 		}
 
 		public override void Erase(GridLayout grid, GameObject brushTarget, Vector3Int position)
@@ -73,23 +89,26 @@ namespace UnityEditor
 				return;
 			}
 			
-			TintTextureGenerator generator = GetGenerator(grid);
+			var generator = GetGenerator(grid);
 			if (generator != null)
 			{
-				m_Color = generator.GetColor(grid as Grid, position.min);
+				mColor = generator.GetColor(grid as Grid, position.min);
 			}
 		}
 
 		private static TintTextureGenerator GetGenerator(GridLayout grid)
 		{
-			TintTextureGenerator generator = FindObjectOfType<TintTextureGenerator>();
-			if (generator == null)
+			var generator = FindObjectOfType<TintTextureGenerator>();
+			if (generator != null)
 			{
-				if (grid != null)
-				{
-					generator = grid.gameObject.AddComponent<TintTextureGenerator>();
-				}
+				return generator;
 			}
+			
+			if (grid != null)
+			{
+				generator = grid.gameObject.AddComponent<TintTextureGenerator>();
+			}
+
 			return generator;
 		}
 	}
@@ -97,7 +116,7 @@ namespace UnityEditor
 	[CustomEditor(typeof(TintBrushSmooth))]
 	public class TintBrushSmoothEditor : GridBrushEditorBase
 	{
-		public TintBrushSmooth brush { get { return target as TintBrushSmooth; } }
+		private TintBrushSmooth brush { get { return target as TintBrushSmooth; } }
 
 		public override GameObject[] validTargets
 		{
@@ -109,8 +128,8 @@ namespace UnityEditor
 
 		public override void OnPaintInspectorGUI()
 		{
-			brush.m_Color = EditorGUILayout.ColorField("Color", brush.m_Color);
-			brush.m_Blend = EditorGUILayout.Slider("Blend", brush.m_Blend, 0f, 1f);
+			brush.color = EditorGUILayout.ColorField("Color", brush.color);
+			brush.blend = EditorGUILayout.Slider("Blend", brush.blend, 0f, 1f);
 			GUILayout.Label("Note: Tilemap needs to use TintedTilemap.shader!");
 		}
 	}

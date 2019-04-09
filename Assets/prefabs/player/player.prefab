@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 567e453fad8ac5945ae45b9b0b2cd45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 200
+  maxSpeed: 500
   controls:
     m_Asset: {fileID: 11400000, guid: b17b44a5681ef4cb5bc4b12f0ff97102, type: 3}
   rollingSpeed: 600
