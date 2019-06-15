@@ -137,11 +137,11 @@ Material:
     - _ColorMask: 15
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DisplacementPack_Size_1: 1.21
+    - _DisplacementPack_Size_1: -2.2
     - _DisplacementPack_Size_2: -1.218
-    - _DisplacementPack_ValueX_1: -0.289
+    - _DisplacementPack_ValueX_1: 0.75
     - _DisplacementPack_ValueX_2: -0.002
-    - _DisplacementPack_ValueY_1: 0.219
+    - _DisplacementPack_ValueY_1: -0.08
     - _DisplacementPack_ValueY_2: -0.202
     - _DstBlend: 0
     - _Generate_Shape_Dist_1: 0.107050575
@@ -155,6 +155,7 @@ Material:
     - _GlossyReflections: 1
     - _HDRControlValue_Value_1: 1.507681
     - _HdrCreate_Value_1: 0.256
+    - _LerpUV_Fade_1: 1
     - _Mask2RGBA_Fade_1: 1
     - _MaskRGBA_Fade_1: 0
     - _MaskRGBA_Fade_2: 0
@@ -166,13 +167,26 @@ Material:
     - _OperationBlend_Fade_2: 1
     - _Parallax: 0.02
     - _PremadeGradients_Fade_1: 1
-    - _PremadeGradients_Offset_1: 0
+    - _PremadeGradients_Offset_1: 0.5
     - _PremadeGradients_Speed_1: 0.84614444
     - _RGBA_Add_Fade_1: 0.254
+    - _ShadowLight_Intensity_1: 1.6
+    - _ShadowLight_NoSprite_1: 0
+    - _ShadowLight_PosX_1: 0.21
+    - _ShadowLight_PosY_1: -0.069
+    - _ShadowLight_Precision_1: 10.774
+    - _ShadowLight_Size_1: 0.8
+    - _ShinyFX_Intensity_1: 0.3
+    - _ShinyFX_Pos_1: 0.18
+    - _ShinyFX_Size_1: -0.092
+    - _ShinyFX_Smooth_1: 0.48
+    - _ShinyFX_Speed_1: 5
+    - _Simple_Displacement_Rotative_Rotation_1: -0.49
+    - _Simple_Displacement_Rotative_Value_1: -0.11
     - _Simple_Displacement_Value_1: -0.104
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SpriteFade: 1
+    - _SpriteFade: 0.42
     - _SrcBlend: 1
     - _Stencil: 0
     - _StencilComp: 8
@@ -187,4 +201,5 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorRGBA_Color_1: {r: 0.61379313, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ShadowLight_Color_1: {r: 1, g: 0.7728195, b: 0.1764706, a: 1}
     - _TintRGBA_Color_1: {r: 0.14705884, g: 1, b: 0, a: 1}

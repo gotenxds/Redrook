@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PreviewMaterial
-  m_Shader: {fileID: 4800000, guid: dda424a1de5da2549ba1dcafb5d7e34a, type: 3}
+  m_Shader: {fileID: 4800000, guid: 5e85c204f931cd544a05b0a43ad97833, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -24,7 +24,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - DisplacementPack_1:
-        m_Texture: {fileID: 2800000, guid: 8718585a856e8454eaef570a365d9e3d, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - DisplacementPack_2:
@@ -96,23 +96,23 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NewTex_1:
-        m_Texture: {fileID: 2800000, guid: 906f2797e9ca81a4486de9bb42a96fc2, type: 3}
+        m_Texture: {fileID: 2800000, guid: a781840386908a140a521bec4c11a0ba, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NewTex_2:
-        m_Texture: {fileID: 2800000, guid: 2217adebf73932d4abe5314165938fae, type: 3}
+        m_Texture: {fileID: 2800000, guid: dc2333e30d803f84ea78aae652212b8e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NewTex_3:
-        m_Texture: {fileID: 2800000, guid: 22fdba6504e95a44184821f30e0bab7a, type: 3}
+        m_Texture: {fileID: 2800000, guid: f0213cf5d9034b4448fe62e75b024e6d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NewTex_4:
-        m_Texture: {fileID: 2800000, guid: 53be24f5cbc204543b6b02f61ad95a4a, type: 3}
+        m_Texture: {fileID: 2800000, guid: ecb05761374765d43a93f1d0dd1c8172, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NewTex_5:
-        m_Texture: {fileID: 2800000, guid: 2776881367d14f147aa2842d9ee669ba, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3c2d903f629b42e45b8ba57420cec19e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NewTex_6:
@@ -132,11 +132,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SourceNewTex_1:
-        m_Texture: {fileID: 2800000, guid: 03a49f9871c06874ab9f996c77d99ead, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1d865dfce22fdf74885d0c0da6a4ac13, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SourceNewTex_2:
-        m_Texture: {fileID: 2800000, guid: 2e52e8594dd87a14e8f10d3c24f48e80, type: 3}
+        m_Texture: {fileID: 2800000, guid: b6ef11c6140bcec499e753562140faa4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SourceNewTex_3:
@@ -193,33 +193,38 @@ Material:
     - AnimatedZoomUV_AnimatedZoomUV_PosY_1: 0.4
     - AnimatedZoomUV_AnimatedZoomUV_Speed_1: 0.392
     - AnimatedZoomUV_AnimatedZoomUV_Zoom_1: 0.953
-    - DistortionUV_DistanceX_1: 0.215
+    - DistortionUV_DistanceX_1: 0.911
     - DistortionUV_DistanceX_2: 0.139
-    - DistortionUV_DistanceY_1: 0.071
+    - DistortionUV_DistanceY_1: 0.587
     - DistortionUV_DistanceY_2: 0.13
     - DistortionUV_Speed_1: 0.354
     - DistortionUV_Speed_2: 1
-    - DistortionUV_WaveX_1: 10
+    - DistortionUV_WaveX_1: 108.043
     - DistortionUV_WaveX_2: 10
-    - DistortionUV_WaveY_1: 7.991
+    - DistortionUV_WaveY_1: 107.129
     - DistortionUV_WaveY_2: 20.103
-    - FishEyeUV_Size_1: 0.373
+    - FishEyeUV_Size_1: 0.254
     - KaleidoscopeUV_Number_1: 1.779
     - KaleidoscopeUV_PosX_1: 0.507
     - KaleidoscopeUV_PosY_1: 0.536
-    - OffsetUV_X_1: -0.159
-    - OffsetUV_Y_1: 0
-    - OffsetUV_ZoomX_1: 1.371
-    - OffsetUV_ZoomY_1: 1
+    - LiquidUV_DistanceX_1: 0.3
+    - LiquidUV_DistanceY_1: 0.393
+    - LiquidUV_Speed_1: -0.429
+    - LiquidUV_WaveX_1: 2
+    - LiquidUV_WaveY_1: 2
+    - OffsetUV_X_1: -0.123
+    - OffsetUV_Y_1: -0.423
+    - OffsetUV_ZoomX_1: 1.381
+    - OffsetUV_ZoomY_1: 1.838
     - PixelUV_Size_1: 32
     - PixelXYUV_SizeX_1: 32
     - PixelXYUV_SizeY_1: 32
     - PositionUV_X_1: -0.035
     - PositionUV_Y_1: 0.035
-    - ResizeUV_X_1: 0
-    - ResizeUV_Y_1: 0
-    - ResizeUV_ZoomX_1: 1
-    - ResizeUV_ZoomY_1: 1
+    - ResizeUV_X_1: -0.749
+    - ResizeUV_Y_1: -0.074
+    - ResizeUV_ZoomX_1: 2.851
+    - ResizeUV_ZoomY_1: 2.833
     - RotationUV_Rotation_1: 12.857
     - RotationUV_Rotation_PosX_1: 0.5
     - RotationUV_Rotation_PosY_1: 0.2
@@ -242,10 +247,10 @@ Material:
     - TwistUV_TwistUV_PosY_2: 0.7179495
     - TwistUV_TwistUV_Radius_1: 0.5
     - TwistUV_TwistUV_Radius_2: 0.5121561
-    - ZoomUV_PosX_1: 0.5
-    - ZoomUV_PosY_1: 0.5
-    - ZoomUV_Zoom_1: 1.05
-    - _Add_Fade_1: 0.936
+    - ZoomUV_PosX_1: 1.346
+    - ZoomUV_PosY_1: -0.038
+    - ZoomUV_Zoom_1: 1.026
+    - _Add_Fade_1: 0.446
     - _AlphaAsAura_Fade_1: 1
     - _AlphaIntensity_Fade_1: 1
     - _AuraDisplacementPack_Size_1: 1.398
@@ -274,36 +279,36 @@ Material:
     - _ColorGradients_Offset_1: 0
     - _ColorGradients_Offset_2: 0
     - _ColorHSV_Brightness_1: 1
-    - _ColorHSV_Hue_1: 0
+    - _ColorHSV_Hue_1: 180
     - _ColorHSV_Saturation_1: 1
     - _ColorMask: 15
     - _Cutoff: 0.5
     - _Darkness_Fade_1: 0.3
     - _Destroyer_Speed_1: 0.5
-    - _Destroyer_Value_1: 0.5
+    - _Destroyer_Value_1: 0
     - _DetailNormalMapScale: 1
-    - _DisplacementPack_Size_1: 1.221
-    - _DisplacementPack_ValueX_1: 0.036
-    - _DisplacementPack_ValueY_1: -0.779
-    - _Displacement_Plus_Size_1: 1
+    - _DisplacementPack_Size_1: -1.547
+    - _DisplacementPack_ValueX_1: 0.61
+    - _DisplacementPack_ValueY_1: -0.773
+    - _Displacement_Plus_Size_1: 0.418
     - _Displacement_Plus_Size_10: 1
     - _Displacement_Plus_Size_11: 1
     - _Displacement_Plus_Size_12: 1
     - _Displacement_Plus_Size_13: 1
     - _Displacement_Plus_Size_14: 1
-    - _Displacement_Plus_ValueX_1: 0
+    - _Displacement_Plus_ValueX_1: -0.077
     - _Displacement_Plus_ValueX_10: 0
     - _Displacement_Plus_ValueX_11: 0
     - _Displacement_Plus_ValueX_12: 0
     - _Displacement_Plus_ValueX_13: 0
     - _Displacement_Plus_ValueX_14: 0
-    - _Displacement_Plus_ValueY_1: 0
+    - _Displacement_Plus_ValueY_1: 0.038
     - _Displacement_Plus_ValueY_10: 0
     - _Displacement_Plus_ValueY_11: 0
     - _Displacement_Plus_ValueY_12: 0
     - _Displacement_Plus_ValueY_13: 0
     - _Displacement_Plus_ValueY_14: 0
-    - _Displacement_Value_1: 0.05
+    - _Displacement_Value_1: -0.182
     - _DstBlend: 0
     - _Emboss_Angle_1: 0
     - _Emboss_Distance_1: 0.3
@@ -324,7 +329,7 @@ Material:
     - _Generate_Donut_PosX_3: 0.5
     - _Generate_Donut_PosX_4: 0.5
     - _Generate_Donut_PosX_5: 0.5
-    - _Generate_Donut_PosY_1: 0.725
+    - _Generate_Donut_PosY_1: 0.5
     - _Generate_Donut_PosY_2: 0.5
     - _Generate_Donut_PosY_3: 0.5
     - _Generate_Donut_PosY_4: 0.5
@@ -334,25 +339,30 @@ Material:
     - _Generate_Donut_SizeDonut_3: 0
     - _Generate_Donut_SizeDonut_4: 0
     - _Generate_Donut_SizeDonut_5: 0
-    - _Generate_Donut_SizeSmooth_1: 0.525
+    - _Generate_Donut_SizeSmooth_1: 0.2
     - _Generate_Donut_SizeSmooth_2: 0.2
     - _Generate_Donut_SizeSmooth_3: 0
     - _Generate_Donut_SizeSmooth_4: 0
     - _Generate_Donut_SizeSmooth_5: 0
-    - _Generate_Donut_Size_1: -0.35
+    - _Generate_Donut_Size_1: 0.1
     - _Generate_Donut_Size_2: 0.1
     - _Generate_Donut_Size_3: 0
     - _Generate_Donut_Size_4: 0
     - _Generate_Donut_Size_5: 0
     - _Generate_Fire_PosX_1: 0
+    - _Generate_Fire_PosX_2: 0.1115382
     - _Generate_Fire_PosX_3: 0.11153824
     - _Generate_Fire_PosY_1: 0
+    - _Generate_Fire_PosY_2: 0
     - _Generate_Fire_PosY_3: 0
-    - _Generate_Fire_Precision_1: 0.05
+    - _Generate_Fire_Precision_1: 0.095
+    - _Generate_Fire_Precision_2: 0.05
     - _Generate_Fire_Precision_3: 0.05
-    - _Generate_Fire_Smooth_1: 0.5
+    - _Generate_Fire_Smooth_1: 0.136
+    - _Generate_Fire_Smooth_2: 0.3499995
     - _Generate_Fire_Smooth_3: 0.34999946
     - _Generate_Fire_Speed_1: 1
+    - _Generate_Fire_Speed_2: 1
     - _Generate_Fire_Speed_3: 1
     - _Generate_Line_Size_1: 150
     - _Generate_Line_Size_2: 0.5
@@ -832,7 +842,7 @@ Material:
     - _Generate_Voronoi_Size_97: 1
     - _Generate_Voronoi_Size_98: 26.707733
     - _Generate_Voronoi_Size_99: 1
-    - _Generate_Xray_Number_1: 22
+    - _Generate_Xray_Number_1: 16
     - _Generate_Xray_Number_10: 8
     - _Generate_Xray_Number_2: 5
     - _Generate_Xray_Number_3: 5
@@ -841,7 +851,7 @@ Material:
     - _Generate_Xray_Number_7: 8
     - _Generate_Xray_Number_8: 8
     - _Generate_Xray_Number_9: 8
-    - _Generate_Xray_PosX_1: 0.194
+    - _Generate_Xray_PosX_1: 0.5
     - _Generate_Xray_PosX_10: 0.5
     - _Generate_Xray_PosX_2: 0.5
     - _Generate_Xray_PosX_3: 0.5
@@ -850,7 +860,7 @@ Material:
     - _Generate_Xray_PosX_7: 0.5
     - _Generate_Xray_PosX_8: 0.5
     - _Generate_Xray_PosX_9: 0.5
-    - _Generate_Xray_PosY_1: 0.527
+    - _Generate_Xray_PosY_1: 0.5
     - _Generate_Xray_PosY_10: 0.5
     - _Generate_Xray_PosY_2: 0.5
     - _Generate_Xray_PosY_3: 0.5
@@ -868,11 +878,11 @@ Material:
     - _Generate_Xray_Speed_7: 0
     - _Generate_Xray_Speed_8: 0
     - _Generate_Xray_Speed_9: 0
-    - _GhostFX_ClipDown_1: 1
-    - _GhostFX_ClipLeft_1: 1
-    - _GhostFX_ClipRight_1: 1
-    - _GhostFX_ClipUp_1: 0.454
-    - _GhostFX_Smooth_1: 0.4
+    - _GhostFX_ClipDown_1: 0.7
+    - _GhostFX_ClipLeft_1: 0.7
+    - _GhostFX_ClipRight_1: 0.7
+    - _GhostFX_ClipUp_1: 0.7
+    - _GhostFX_Smooth_1: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -886,14 +896,14 @@ Material:
     - _GrayScale_Fade_5: 1
     - _GrayScale_Fade_6: 1
     - _GrayScale_Fadesss: 1
-    - _HdrCreate_Value_1: 1.857
+    - _HdrCreate_Value_1: 0.256
     - _Hologram_Speed_1: 1
     - _Hologram_Value_1: 1
     - _HolographicParalax_Size_1: 1
     - _HumanBreatEx_Intensity_1: 2
     - _HumanBreatEx_Side_Intensity_1: 0.476
     - _HumanBreatEx_Speed_1: 1.037
-    - _InnerGlowHQ_Intensity_1: 14.314
+    - _InnerGlowHQ_Intensity_1: 2
     - _InnerGlowHQ_Size_1: 3
     - _LerpUV_Fade_1: 1
     - _Lerp_Fade_1: 1
@@ -907,7 +917,7 @@ Material:
     - _Make3DFX_PosY_2: -0.09743948
     - _Make3DFX_Size_1: 8
     - _Make3DFX_Size_2: 8.512886
-    - _Mask2RGBA_Fade_1: 1
+    - _Mask2RGBA_Fade_1: 0.017
     - _Mask2uv_Fade_13: 0
     - _Mask2uv_Fade_15: 1
     - _Mask2uv_Fade_17: 0
@@ -930,7 +940,7 @@ Material:
     - _OcclusionStrength: 1
     - _OperationBlendMask_Fade_1: 1
     - _OperationBlend_Fade_1: 1
-    - _OperationBlend_Fade_2: 0.764
+    - _OperationBlend_Fade_2: 1
     - _Outline_Size_1: 1
     - _Parallax: 0.02
     - _PatternMovement_PosX_1: 0.077
@@ -952,7 +962,7 @@ Material:
     - _PremadeGradients_Speed_1: 0.496
     - _PremadeGradients_Speed_2: 0
     - _RGBA_Add_Fade_1: 1.756
-    - _RGBA_Mul_Fade_1: 1.332
+    - _RGBA_Mul_Fade_1: 1.012
     - _RGBA_Sub_Fade_1: 1
     - _ShadowLight_Intensity_1: 1.5
     - _ShadowLight_NoSprite_1: 1
@@ -972,7 +982,7 @@ Material:
     - _ShinyFX_Speed_2: 1.141461
     - _Simple_Displacement_Rotative_Rotation_1: 0.05
     - _Simple_Displacement_Rotative_Value_1: 0.05
-    - _Simple_Displacement_Value_1: 0.05
+    - _Simple_Displacement_Value_1: -0.3
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpriteFade: 1
@@ -1000,12 +1010,12 @@ Material:
     - __CompressionFX_Value_1: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorGradients_Color1_1: {r: 0, g: 0.59636354, b: 1, a: 1}
+    - _ColorGradients_Color1_1: {r: 1, g: 0, b: 0, a: 1}
     - _ColorGradients_Color2_1: {r: 0, g: 0, b: 1, a: 1}
     - _ColorGradients_Color3_1: {r: 0, g: 1, b: 0, a: 1}
-    - _ColorGradients_Color4_1: {r: 0.92156863, g: 0.92156863, b: 0.92156863, a: 1}
+    - _ColorGradients_Color4_1: {r: 1, g: 1, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FillColor_Color_1: {r: 1, g: 0.7832226, b: 0.043137252, a: 1}
+    - _FillColor_Color_1: {r: 0.83823526, g: 0.8004892, b: 0.51739347, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _FourGradients_Color1_1: {r: 0.102941155, g: 1, b: 0, a: 1}
     - _FourGradients_Color1_1222: {r: 1, g: 0, b: 0, a: 1}
@@ -1025,4 +1035,4 @@ Material:
     - _Outline_Color_1: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowLight_Color_1: {r: 0, g: 0.7, b: 1, a: 1}
-    - _TintRGBA_Color_1: {r: 0.9197265, g: 1, b: 0.8349056, a: 1}
+    - _TintRGBA_Color_1: {r: 1, g: 0, b: 0, a: 0.528}

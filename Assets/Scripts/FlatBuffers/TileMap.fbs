@@ -1,0 +1,12 @@
+namespace World;
+
+table TileMap {
+    tiles:[uint16];
+    offset: uint16 = 0;
+}
+
+table Cell {
+    tileMaps: [TileMap];
+}
+
+root_type TileMap;

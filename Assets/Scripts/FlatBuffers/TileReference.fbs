@@ -1,0 +1,7 @@
+namespace World;
+
+table TileReference {
+  tileNames: [string];
+}
+
+root_type TileReference;

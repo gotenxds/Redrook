@@ -2,7 +2,42 @@
 <project version="4">
   <component name="ContentModelUserStore">
     <attachedFolders />
-    <explicitIncludes />
-    <explicitExcludes />
+    <explicitIncludes>
+      <Path>Library/PackageCache/com.unity.ads@2.0.8</Path>
+      <Path>Library/PackageCache/com.unity.analytics@3.3.2</Path>
+      <Path>Library/PackageCache/com.unity.burst@1.0.4</Path>
+      <Path>Library/PackageCache/com.unity.cinemachine@2.3.4</Path>
+      <Path>Library/PackageCache/com.unity.collab-proxy@1.2.16</Path>
+      <Path>Library/PackageCache/com.unity.collections@0.0.9-preview.20</Path>
+      <Path>Library/PackageCache/com.unity.editorcoroutines@0.0.2-preview.1</Path>
+      <Path>Library/PackageCache/com.unity.entities@0.0.12-preview.33</Path>
+      <Path>Library/PackageCache/com.unity.ext.nunit@1.0.0</Path>
+      <Path>Library/PackageCache/com.unity.ide.rider@1.0.8</Path>
+      <Path>Library/PackageCache/com.unity.ide.visualstudio@1.0.10</Path>
+      <Path>Library/PackageCache/com.unity.ide.vscode@1.0.7</Path>
+      <Path>Library/PackageCache/com.unity.inputsystem@0.2.10-preview</Path>
+      <Path>Library/PackageCache/com.unity.jobs@0.0.7-preview.13</Path>
+      <Path>Library/PackageCache/com.unity.mathematics@1.0.1</Path>
+      <Path>Library/PackageCache/com.unity.postprocessing@2.1.6</Path>
+      <Path>Library/PackageCache/com.unity.properties@0.5.0-preview</Path>
+      <Path>Library/PackageCache/com.unity.purchasing@2.0.6</Path>
+      <Path>Library/PackageCache/com.unity.quicksearch@1.0.1-preview.1</Path>
+      <Path>Library/PackageCache/com.unity.recorder@2.0.0-preview.6</Path>
+      <Path>Library/PackageCache/com.unity.render-pipelines.core@6.7.1</Path>
+      <Path>Library/PackageCache/com.unity.render-pipelines.lightweight@6.7.1</Path>
+      <Path>Library/PackageCache/com.unity.rendering.hybrid@0.0.1-preview.10</Path>
+      <Path>Library/PackageCache/com.unity.shadergraph@6.7.1</Path>
+      <Path>Library/PackageCache/com.unity.textmeshpro@2.0.1</Path>
+      <Path>Library/PackageCache/nuget.mono-cecil@0.1.6-preview</Path>
+      <Path>Packages</Path>
+      <Path>ProjectSettings</Path>
+    </explicitIncludes>
+    <explicitExcludes>
+      <Path>.idea</Path>
+      <Path>Library</Path>
+      <Path>Logs</Path>
+      <Path>Temp</Path>
+      <Path>obj</Path>
+    </explicitExcludes>
   </component>
 </project>
