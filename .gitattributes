@@ -1,5 +1,8 @@
 * text=auto
 
+# Redrook files
+*.rrtd
+
 # Unity files
 *.meta -text merge=unityyamlmerge diff
 *.unity -text merge=unityyamlmerge diff
