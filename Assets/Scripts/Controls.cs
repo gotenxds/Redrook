@@ -104,12 +104,84 @@ public class Controls : IInputActionCollection
                     ""modifiers"": """"
                 },
                 {
+                    ""name"": ""Move"",
+                    ""id"": ""d822ff8a-0292-40ab-bbf7-03bf3d5ee30e"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false,
+                    ""modifiers"": """"
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""69dd3414-6882-400e-a00e-837ab33e1792"",
+                    ""path"": ""<XInputController>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true,
+                    ""modifiers"": """"
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""eb235ab9-b1de-4f8a-bde2-ae44eec2f110"",
+                    ""path"": ""<XInputController>/leftStick/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true,
+                    ""modifiers"": """"
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""df627923-3910-4c2b-b3e8-bc260cee1692"",
+                    ""path"": ""<XInputController>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true,
+                    ""modifiers"": """"
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""c0b7ed69-9e98-414b-acf5-66f3c4e6a397"",
+                    ""path"": ""<XInputController>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true,
+                    ""modifiers"": """"
+                },
+                {
                     ""name"": """",
                     ""id"": ""0176c9d9-0d21-4b02-91fd-711ad1c89cb4"",
                     ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Player"",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false,
+                    ""modifiers"": """"
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e9cf75a6-2f53-4841-8e29-93a905405fc2"",
+                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""Roll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false,
@@ -131,6 +203,18 @@ public class Controls : IInputActionCollection
                 },
                 {
                     ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Controller"",
+            ""basedOn"": """",
+            ""bindingGroup"": ""Controller"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<XInputController>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 }
@@ -245,6 +329,15 @@ public class Controls : IInputActionCollection
         {
             if (m_PlayerSchemeIndex == -1) m_PlayerSchemeIndex = asset.GetControlSchemeIndex("Player");
             return asset.controlSchemes[m_PlayerSchemeIndex];
+        }
+    }
+    private int m_ControllerSchemeIndex = -1;
+    public InputControlScheme ControllerScheme
+    {
+        get
+        {
+            if (m_ControllerSchemeIndex == -1) m_ControllerSchemeIndex = asset.GetControlSchemeIndex("Controller");
+            return asset.controlSchemes[m_ControllerSchemeIndex];
         }
     }
     public interface IPlayerActions
