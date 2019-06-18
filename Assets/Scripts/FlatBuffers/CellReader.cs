@@ -5,13 +5,15 @@ namespace FlatBuffers
 {
     public class CellReader
     {
-        public static Cell Read(string cellPath)
+        public static CellWrapper Read(string cellPath)
         {
             var readAllBytes = File.ReadAllBytes(cellPath);
 
             var byteBuffer = new ByteBuffer(readAllBytes);
 
-            return Cell.GetRootAsCell(byteBuffer);
+            var rootAsCell = Cell.GetRootAsCell(byteBuffer);
+
+            return new CellWrapper(ref rootAsCell);
         }
     }
 }

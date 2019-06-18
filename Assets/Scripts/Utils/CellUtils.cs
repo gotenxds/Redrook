@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using FlatBuffers;
@@ -12,9 +13,9 @@ namespace Utils
     {
         private static readonly string Suffix = "rrtd";
         private static readonly Func<string, string> Path = name => $"Assets/Resources/landscape/{name}.{Suffix}";
-        private static readonly Regex Reg = new Regex(@"x(\d*)y(\d*)z(\d*)");
+        private static readonly Regex Reg = new Regex(@"x(\-*\d+)y(\-*\d+)z(\-*\d+)");
         
-        public static Vector3Int GetCellCenter(string cellName)
+        public static Vector3Int GetWorldCellCenter(string cellName)
         {
             var groups = Reg.Matches(cellName)[0].Groups;
 
@@ -27,19 +28,19 @@ namespace Utils
             );
         }
         
-        public static Vector3Int GetCellPosition(string cellName)
+        public static Vector3Int GetWorldCellPosition(string cellName)
         {
             var groups = Reg.Matches(cellName)[0].Groups;
 
             var cellSideSize = Configs.CellSideSize;
-            var halfSize = cellSideSize / 2;
+
             return new Vector3Int(
                 int.Parse(groups[1].Value) * cellSideSize,
                 int.Parse(groups[2].Value) * cellSideSize,
                 int.Parse(groups[3].Value) * cellSideSize
             );
         }
-        
+
         public static string CreateCellPath(Vector3Int position)
         {
             return Path(CreateCellName(position));
@@ -60,7 +61,7 @@ namespace Utils
             return File.Exists(path);
         }
 
-        public static Cell? LoadCellByName(string cellName)
+        public static CellWrapper LoadCellByName(string cellName)
         {
             var cellPath = CreateCellPath(cellName);
 

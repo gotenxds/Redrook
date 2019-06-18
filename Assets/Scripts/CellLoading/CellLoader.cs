@@ -5,10 +5,16 @@ using System.Linq;
 using UnityEngine;
 using Utils;
 using World;
+using Color = UnityEngine.Color;
 using Vector3 = UnityEngine.Vector3;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace CellLoading
 {
+    [ExecuteAlways]
     public class CellLoader : MonoBehaviour
     {
         [SerializeField] private Transform loadFrom;
@@ -18,12 +24,12 @@ namespace CellLoading
         private bool isLoading;
         private bool isUnloading;
         private Vector3 lastPosition;
-        private readonly Dictionary<string, Cell> cellsByName = new Dictionary<string, Cell>();
+        private readonly Dictionary<string, CellWrapper> cellsByName = new Dictionary<string, CellWrapper>();
 
-        private Dictionary<string, Cell> CellsByName => cellsByName;
+        private Dictionary<string, CellWrapper> CellsByName => cellsByName;
 
-        public Cell? GetCellFor(Vector3 position)
-        { 
+        public CellWrapper GetCellFor(Vector3 position)
+        {
             var cellLocation = Vector3Int.FloorToInt(position / Configs.CellSideSize);
             var cellName = CellUtils.CreateCellName(cellLocation);
 
@@ -35,6 +41,11 @@ namespace CellLoading
             return null;
         }
 
+        public IEnumerable<CellWrapper> GetDirtyCells()
+        {
+            return cellsByName.Values.Where(cell => cell.IsDirty);
+        }
+        
         private void Start()
         {
             StartCoroutine(LoadCells());
@@ -56,12 +67,12 @@ namespace CellLoading
                 yield break;
             }
 
-            var position = loadFrom.position / Configs.CellSideSize;
-            
+            var position = loadFrom.position;
+
             Configs.Directions
-                .Select(SurroundingCells(position))
-                .Where(InLoadingRange(position))
+                .Select(SurroundingCells(position / Configs.CellSideSize))
                 .Select(CellUtils.CreateCellName)
+                .Where(InLoadingRange(position))
                 .Where(NotLoaded)
                 .Select(CellUtils.LoadCellByName).ToList()
                 .ForEach(RegisterCell);
@@ -70,12 +81,14 @@ namespace CellLoading
         private static Func<(short, short), Vector3Int> SurroundingCells(Vector3 position)
         {
             return direction =>
-                Vector3Int.RoundToInt(new Vector3(position.x + direction.Item1, position.y + direction.Item2));
+                Vector3Int.RoundToInt(new Vector3(
+                    position.x + direction.Item1,
+                    position.y + direction.Item2));
         }
 
-        private Func<Vector3Int, bool> InLoadingRange(Vector3 position)
+        private Func<string, bool> InLoadingRange(Vector3 pos)
         {
-            return pos => Vector2.Distance((Vector2Int) pos, position) < loadRadius;
+            return cellName => GetCellBounds(cellName, loadRadius).Contains(pos);
         }
 
         private bool NotLoaded(string name)
@@ -83,11 +96,11 @@ namespace CellLoading
             return !cellsByName.ContainsKey(name);
         }
 
-        private void RegisterCell(Cell? cell)
+        private void RegisterCell(CellWrapper cell)
         {
-            if (cell.HasValue)
+            if (cell != null)
             {
-                cellsByName.Add(cell.Value.Name, cell.Value);
+                cellsByName.Add(cell.Name, cell);
             }
         }
 
@@ -97,20 +110,66 @@ namespace CellLoading
             {
                 yield break;
             }
-//
-//            var operations = Enumerable
-//                .Select(cellsByName.Values
-//                    .Where(scene =>
-//                        Vector2.Distance(scene.GetRootGameObjects()[0].transform.position, loadFrom.position) >
-//                        forgetRadius), SceneManager.UnloadSceneAsync)
-//                .Where(opp => opp != null)
-//                .ToArray();
-//
-//            if (operations.Length <= 0) yield break;
-//
-//            isUnloading = true;
-//            yield return new WaitUntil(() => operations.All(opp => opp.isDone));
-//            isUnloading = false;
+
+            var position = loadFrom.position;
+
+            var cells = cellsByName.Keys
+                .Where(InUnLoadingRange(position))
+                .Select(cellName => CellsByName[cellName]).ToList();
+
+            foreach (var cell in cells)
+            {
+                cellsByName.Remove(cell.Name);
+                Debug.Log("unloading");
+            }
+
+            //cellCleaner.Clean(cells);
+        }
+
+        private Func<string, bool> InUnLoadingRange(Vector3 pos)
+        {
+            return cellName => !GetCellBounds(cellName, forgetRadius).Contains(pos);
+        }
+        
+        public Bounds GetCellBounds(string cellName, float offset)
+        {
+            return new Bounds(CellUtils.GetWorldCellCenter(cellName),
+                new Vector3(Configs.CellSideSize * offset, Configs.CellSideSize * offset,
+                    Configs.CellSideSize * offset));
+        }
+        
+        private void OnDrawGizmos()
+        {
+            var camera = Camera.current;
+            if (camera != null)
+            {
+                UnityEngine.Gizmos.color = cellsByName.Values.Any(cell => cell.IsDirty) ? Color.red : Color.green;
+                var viewportToWorldPoint = camera.ViewportToWorldPoint(new Vector3(0.03f, .95f));
+                
+                UnityEngine.Gizmos.DrawSphere((Vector2)viewportToWorldPoint, HandleUtility.GetHandleSize(viewportToWorldPoint) * 0.3f);
+                
+                UnityEngine.Gizmos.color = Color.white;
+            }
+            UnityEngine.Gizmos.DrawWireCube(Configs.WorldCenter, new Vector3(Configs.WorldSideSizeInTiles, Configs.WorldSideSizeInTiles));
+
+            var current = Vector3.zero;
+            var limit = Configs.WorldSideSizeInTiles - Configs.CellSideSize;
+            var offsetToCenter = (Vector3)Configs.CellDimensions / 2;
+            while (current.x < limit || current.y < limit)
+            {
+                UnityEngine.Gizmos.DrawWireCube(current + offsetToCenter, (Vector3)Configs.CellDimensions);
+
+                if (current.x < limit)
+                {
+                    current.x += Configs.CellSideSize;
+                }
+                else
+                {
+                    current.x = 0;
+                    current.y += Configs.CellSideSize;
+                }
+            }
+            UnityEngine.Gizmos.DrawWireCube(current + offsetToCenter, (Vector3)Configs.CellDimensions);
         }
     }
 }

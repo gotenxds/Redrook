@@ -9,11 +9,6 @@ namespace GridSaver
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
-            
-            if(GUILayout.Button("Load"))
-            {
-                //((Loader) target).LoadAllTiles();
-            }
         }
     }
 }
