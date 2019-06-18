@@ -568,6 +568,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.79999924
       objectReference: {fileID: 0}
+    - target: {fileID: 8984482364883840422, guid: 5c657301164b5b6468c9161531a24cd5,
+        type: 3}
+      propertyPath: orthographic size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984482364883840422, guid: 5c657301164b5b6468c9161531a24cd5,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984482364883840422, guid: 5c657301164b5b6468c9161531a24cd5,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 408440248, guid: 5c657301164b5b6468c9161531a24cd5, type: 3}
+      propertyPath: m_UpscaleRT
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c657301164b5b6468c9161531a24cd5, type: 3}
 --- !u!4 &1091226264 stripped
