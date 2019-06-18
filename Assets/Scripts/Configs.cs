@@ -4,11 +4,11 @@ using UnityEngine;
 
 public static class Configs
 {
-    public static int WorldSideSizeInTiles => 12000;
+    public static int WorldSideSizeInTiles => 8000;
     
     public static int WorldTileCount => WorldSideSizeInTiles * WorldSideSizeInTiles;
     
-    public static int CellSideSize => 2000;    
+    public static int CellSideSize => 1000;    
 
     public static Vector3Int CellDimensions => new Vector3Int(CellSideSize, CellSideSize, 1);
     
@@ -21,8 +21,6 @@ public static class Configs
     {
         return (ushort) (position.x + position.y * WorldSideSizeInTiles);
     }
-    
-    public static Vector3 WorldCenter => new Vector3(WorldSideSizeInTiles, WorldSideSizeInTiles) / 2;
     
     public static ushort CellPositionToIndex(Vector3Int position)
     {
