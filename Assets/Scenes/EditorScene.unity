@@ -370,6 +370,11 @@ PrefabInstance:
       propertyPath: speed.y
       value: 350
       objectReference: {fileID: 0}
+    - target: {fileID: 8984482363760271287, guid: 5c657301164b5b6468c9161531a24cd5,
+        type: 3}
+      propertyPath: rollCooldown
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c657301164b5b6468c9161531a24cd5, type: 3}
 --- !u!4 &1091226264 stripped

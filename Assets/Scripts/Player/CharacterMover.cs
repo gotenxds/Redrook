@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -33,8 +34,12 @@ namespace Movement
         private void OnMovePerformed(InputAction.CallbackContext context)
         {
             var steering = context.ReadValue<Vector2>();
-
+            
             Move(speed, Vector2.ClampMagnitude(steering, 1f));
+            if (Math.Abs(steering.x) > 0.5 || Math.Abs(steering.y) > 0.1)
+            {
+                    
+            }
         }
         
         private void OnMoveCancelled(InputAction.CallbackContext context)
